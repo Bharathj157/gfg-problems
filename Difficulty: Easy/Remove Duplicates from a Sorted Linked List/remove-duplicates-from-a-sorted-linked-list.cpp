@@ -54,28 +54,18 @@ class Solution {
         Node *tmp=head,*tmp2=head->next,*tmp3;
         int flag=0;
         
-        while(tmp2)
+        while(tmp->next)
         {
-            while(tmp->data == tmp2->data)
+            if(tmp->data == tmp->next->data)
             {
                 tmp3=tmp->next;
-                tmp2=tmp2->next;
-            
-                //delete tmp3;
+                tmp->next=tmp->next->next;
                 delete tmp3;
-                tmp->next=tmp2;
-                
-                if(tmp2 == NULL)
-                {
-                    tmp->next=NULL;
-                    return head;
-                }
-                
             }
-            tmp=tmp->next;
-            tmp2=tmp2->next;
-            
-            
+            else
+            {
+                tmp=tmp->next;
+            }
         }
         return head;
     }
